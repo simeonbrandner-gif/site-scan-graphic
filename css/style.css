@@ -333,7 +333,7 @@ address { font-style: normal; }
   /* 03 Galerie: slider instead of the hover effect */
   .grid--galerie { gap: 24px; }
   .ba__img, .ba__canvas { display: none; }
-  .ba__media { cursor: ew-resize; }
+  .ba__media { cursor: ew-resize; overflow: visible; } /* lets the handle pass the edge */
   .ba__caption { height: 34px; }
   .ba__btn { font-size: 18px; }
 
@@ -368,7 +368,8 @@ address { font-style: normal; }
   .ba__handle {
     position: absolute;
     top: 50%;
-    left: clamp(22px, var(--pos, 50%), calc(100% - 22px)); /* stays whole at the edges */
+    left: var(--pos, 50%);    /* centred on the line, half outside the photo at the edges */
+    z-index: 2;
     width: 40px;
     height: 40px;
     margin: -20px 0 0 -20px;

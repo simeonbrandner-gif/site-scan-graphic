@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scan Graphic SA · L’alchimie de vos images</title>
+  <meta name="description" content="Scan Graphic SA, photolithographie à Nyon : conseil, images, épreuvage contractuel et pré presse.">
+  <link rel="icon" href="images/logo-scan-graphic.svg" type="image/svg+xml">
+  <!-- Adobe Fonts (Trade Gothic Next), à activer sur le compte Adobe du client :
+  <link rel="stylesheet" href="https://use.typekit.net/XXXXXXX.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header" data-theme="light">
+    <div class="header__inner container">
+      <a class="header__logo" href="#accueil" aria-label="Scan Graphic, retour à l’accueil">
+        <img src="images/logo-scan-graphic.svg" width="216" height="115" alt="Scan Graphic">
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#accueil" class="is-active">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu (opened by the burger) -->
+  <div class="menu-mobile" id="menu-mobile" hidden>
+    <a class="menu-mobile__logo" href="#accueil" aria-label="Scan Graphic, retour à l’accueil">
+      <img src="images/logo-scan-graphic.svg" width="216" height="115" alt="Scan Graphic">
+    </a>
+    <button class="menu-mobile__close" type="button" aria-label="Fermer le menu">
+      <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M12 12l20 20M32 12L12 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="menu-mobile__nav" aria-label="Navigation mobile">
+      <a href="#accueil" class="is-active">Accueil</a>
+      <a href="#services">Services</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="menu-mobile__info">
+      Scan Graphic SA<br>
+      11, rue Maupertuis, CH - 1260 Nyon<br>
+      <a href="tel:+41229947488">T +41 22 994 74 88</a><br>
+      <a href="mailto:atelier@scan-graphic.ch">atelier@scan-graphic.ch</a>
+    </p>
+  </div>
+
+  <main>
+
+    <!-- 01 Accueil -->
+    <section id="accueil" class="section section--accueil" data-section data-theme="light">
+      <h1 class="hero__tagline">L’alchimie de vos images</h1>
+      <div class="hero__band">
+        <address class="hero__col hero__col--left">
+          Scan Graphic SA<br>
+          11, rue Maupertuis<br>
+          CH - 1260 Nyon
+        </address>
+        <p class="hero__col">
+          <a href="tel:+41229947488">T +41 22 994 74 88</a><br>
+          <a href="mailto:atelier@scan-graphic.ch">atelier@scan-graphic.ch</a><br>
+          <a href="https://www.scan-graphic.ch">www.scan-graphic.ch</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 02 Services -->
+    <section id="services" class="section section--services" data-section>
+      <h2 class="visually-hidden">Services</h2>
+      <div class="container grid">
+        <article class="panel">
+          <h3>Conseil &amp; Réalisation</h3>
+          <p>Nous étudions avec vous votre projet en détail et nous vous conseillons sur la meilleure manière d’atteindre vos objectifs en matière de produit imprimé ou digital.</p>
+          <p>Notre vous aidons à choisir les bons prestataires de service si vous n’en disposez pas.</p>
+        </article>
+        <article class="panel">
+          <h3>Images</h3>
+          <p>Acquisition d’images haute définition d’après tous types d’originaux</p>
+          <p>Retouches, équilibrages chromatiques</p>
+          <p>Montages, intégrations</p>
+          <p>Colorimétrie pour tout type de production</p>
+          <p>(RVB, WEB, CMJN, Teintes mélangées)</p>
+        </article>
+        <article class="panel">
+          <h3>Épreuvage contractuel</h3>
+          <p>La gestion des imprimés fait appel à une kyrielle de normes qui nécessitent des épreuves correspondantes.<br>Nous proposons un épreuvage contractuel pour :</p>
+          <p>– Norme papier couché (ISO 300 v2, PSO coated NP screen, etc.)</p>
+          <p>– Norme papier offset (ISO Uncoated, PSO Uncoated, etc.)</p>
+          <p>– Norme papier journal (ISO Newspaper)</p>
+          <p>Nous réalisons aussi vos posters photos, affichages SGA, PLV, etc…</p>
+        </article>
+        <article class="panel">
+          <h3>Pré Presse</h3>
+          <p>Gestion et optimisation de mises en pages</p>
+          <p>Adaptation de langues, corrections typographiques</p>
+          <p>Bons-à-tirer ( PDF ou papier)</p>
+          <p>Préparation des PDF haute définition pour impression</p>
+          <p>Suivi de production &amp; déplacement sous presse</p>
+          <p>Gestion des apprêts spéciaux pour PLV, posters, etc…</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 03 Galerie
+         data-apres : chemin de l'image "Après". Vide = placeholder (l'image Avant en noir et blanc). -->
+    <section id="galerie" class="section section--galerie" data-section>
+      <h2 class="visually-hidden">Galerie</h2>
+      <div class="container grid grid--galerie">
+        <figure class="ba" data-avant="images/galerie/jazz_avant.jpg" data-apres="" data-label="Honda Jazz">
+          <div class="ba__media"><img class="ba__img" src="images/galerie/jazz_avant.jpg" alt="Honda Jazz, avant retouche"></div>
+          <figcaption class="ba__caption">
+            <button type="button" class="ba__btn is-active" data-show="avant" aria-pressed="true">Avant</button>
+            <button type="button" class="ba__btn" data-show="apres" aria-pressed="false">Après</button>
+          </figcaption>
+        </figure>
+        <figure class="ba" data-avant="images/galerie/plage_avant.jpg" data-apres="" data-label="Plage">
+          <div class="ba__media"><img class="ba__img" src="images/galerie/plage_avant.jpg" alt="Plage, avant retouche"></div>
+          <figcaption class="ba__caption">
+            <button type="button" class="ba__btn is-active" data-show="avant" aria-pressed="true">Avant</button>
+            <button type="button" class="ba__btn" data-show="apres" aria-pressed="false">Après</button>
+          </figcaption>
+        </figure>
+        <figure class="ba" data-avant="images/galerie/maison_avant.jpg" data-apres="" data-label="Maison tropicale">
+          <div class="ba__media"><img class="ba__img" src="images/galerie/maison_avant.jpg" alt="Maison tropicale, avant retouche"></div>
+          <figcaption class="ba__caption">
+            <button type="button" class="ba__btn is-active" data-show="avant" aria-pressed="true">Avant</button>
+            <button type="button" class="ba__btn" data-show="apres" aria-pressed="false">Après</button>
+          </figcaption>
+        </figure>
+        <figure class="ba" data-avant="images/galerie/c1_avant.jpg" data-apres="" data-label="Citroën C1">
+          <div class="ba__media"><img class="ba__img" src="images/galerie/c1_avant.jpg" alt="Citroën C1, avant retouche"></div>
+          <figcaption class="ba__caption">
+            <button type="button" class="ba__btn is-active" data-show="avant" aria-pressed="true">Avant</button>
+            <button type="button" class="ba__btn" data-show="apres" aria-pressed="false">Après</button>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 04 Contact -->
+    <section id="contact" class="section section--contact" data-section>
+      <h2 class="visually-hidden">Contact</h2>
+      <div class="container">
+        <div class="contact">
+          <div class="map">
+            <iframe
+              title="Carte : Scan Graphic SA, 11, rue Maupertuis, Nyon"
+              src="https://www.google.com/maps?q=Scan+Graphic+SA,+Rue+Maupertuis+11,+1260+Nyon,+Suisse&amp;hl=fr&amp;z=16&amp;output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+          <div class="contact__info">
+            <p class="contact__name">Scan Graphic SA</p>
+            <address class="contact__address">11, rue Maupertuis<br>CH - 1260 Nyon</address>
+            <p class="contact__phone">
+              <a href="tel:+41229947488">T +41 22 994 74 88</a><br>
+              <a href="mailto:atelier@scan-graphic.ch">atelier@scan-graphic.ch</a>
+            </p>
+            <p class="contact__transfer">Transfert de fichiers</p>
+            <p class="contact__wetransfer"><a href="https://wetransfer.com" target="_blank" rel="noopener">wetransfer.com</a></p>
+            <div class="contact__social">
+              <!-- URLs Facebook et LinkedIn : à fournir par le client -->
+              <a href="#" aria-label="Facebook">
+                <svg width="47" height="47" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="3" fill="#8A8A8A"/><path d="M26.5 48V29.5h6l.9-7h-6.9v-4.4c0-2 .6-3.4 3.5-3.4h3.7V8.4c-.6-.1-2.8-.3-5.4-.3-5.3 0-8.9 3.2-8.9 9.1v5.3h-6v7h6V48z" fill="#fff"/></svg>
+              </a>
+              <a href="#" aria-label="LinkedIn">
+                <svg width="47" height="47" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="3" fill="#8A8A8A"/><rect x="9" y="18.5" width="6.5" height="21" fill="#fff"/><circle cx="12.25" cy="11.5" r="3.8" fill="#fff"/><path d="M20.5 18.5h6.2v2.9c.9-1.7 3.1-3.4 6.3-3.4 6.7 0 7.9 4.4 7.9 10.1v11.4h-6.5V29.4c0-2.4 0-5.5-3.4-5.5s-3.9 2.6-3.9 5.3v10.3h-6.6z" fill="#fff"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

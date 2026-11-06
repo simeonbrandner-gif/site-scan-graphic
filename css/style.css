@@ -1,0 +1,445 @@
+/* Scan Graphic SA — one-page site
+   Design reference: Figma "Site - Scan Graphic", frames at 1440 wide. */
+
+:root {
+  --salmon: #FF8F6D;
+  --ink: #141414;
+  --nav: #212121;
+  --panel: rgba(255, 255, 255, 0.82);
+  --map: #E8E7E3;
+  /* Mobile burger colour (Figma "Header Mobile"): salmon on every section */
+  --burger: var(--salmon);
+  --burger-light: var(--salmon);   /* over the Accueil photo */
+
+  /* Trade Gothic Next comes from Adobe Fonts (kit to add in index.html).
+     Trade Gothic LT Std is used if it is installed on the computer. */
+  --font: "trade-gothic-next", "Trade Gothic Next LT Pro", "Trade Gothic Next",
+          "Trade Gothic LT Std", "Trade Gothic", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+
+  --container: 1186px;
+  --gutter: 24px;
+  --content-top: 273px;   /* where panels start under the header */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background: #3B3E41;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; }
+a { color: inherit; text-decoration: none; }
+address { font-style: normal; }
+
+.container {
+  width: min(var(--container), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Header (fixed on every section) ---------- */
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+  height: 200px;
+  pointer-events: none;
+}
+.header__inner { position: relative; height: 100%; }
+
+.header__logo {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  width: 236px;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+.header__logo img { width: 100%; height: auto; }
+
+.nav {
+  position: absolute;
+  top: 172px;
+  right: 0;
+  display: flex;
+  gap: 46px;
+  pointer-events: auto;
+}
+.nav a {
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--nav);
+  transition: color .3s ease;
+}
+.nav a:hover,
+.nav a.is-active { color: var(--salmon); }
+.header[data-theme="light"] .nav a:not(.is-active):not(:hover) { color: #fff; }
+
+/* ---------- Sections ---------- */
+
+.section {
+  position: relative;
+  min-height: 100vh;
+  background: center / cover no-repeat;
+  scroll-snap-align: start;
+}
+
+/* 01 Accueil */
+.section--accueil {
+  min-height: max(100vh, 640px);
+  background-image: url(../images/fonds/accueil.jpg);
+}
+.hero__tagline {
+  position: absolute;
+  top: 51.2%;
+  left: var(--gutter);
+  right: var(--gutter);
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.hero__band {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 60px;
+  min-height: 117px;
+  padding: 16px var(--gutter);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  background: var(--salmon);
+  color: #fff;
+  font-size: 20px;
+  line-height: 27px;
+  font-weight: 700;
+}
+.hero__col--left { text-align: right; }
+.hero__band a:hover { text-decoration: underline; }
+
+/* 02 Services */
+.section--services {
+  padding: var(--content-top) 0 120px;
+  background-image: url(../images/fonds/services.jpg);
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.panel {
+  min-height: 277px;
+  padding: 14px 15px 18px;
+  background: var(--panel);
+}
+.panel h3 {
+  margin-bottom: 22px;
+  font-size: 27px;
+  line-height: 32px;
+  font-weight: 700;
+}
+.panel p {
+  margin-bottom: 11px;
+  font-size: 17px;
+  line-height: 21px;
+}
+.panel p:last-child { margin-bottom: 0; }
+
+/* 03 Galerie */
+.section--galerie {
+  padding: var(--content-top) 0 112px;
+  background-image: url(../images/fonds/galerie.jpg);
+}
+.grid--galerie { gap: 35px 28px; }
+
+/* Avant / Après card (behaviour in js/main.js) */
+.ba__media {
+  position: relative;
+  aspect-ratio: 579 / 400;
+  overflow: hidden;
+  background: #D9D9D9;
+  cursor: pointer;
+}
+.ba__img,
+.ba__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.ba__img { object-fit: cover; }
+.ba__img.is-gray { filter: grayscale(1); }
+.ba__canvas { opacity: 0; transition: opacity .3s ease; }
+.ba__canvas.is-ready { opacity: 1; }
+
+.ba__caption {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 35px;
+  background: #fff;
+}
+.ba__btn {
+  font: inherit;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color .25s ease;
+}
+.ba__btn:hover { color: var(--salmon); }
+.ba__btn.is-active { color: var(--salmon); }
+.ba__btn:focus-visible {
+  outline: 2px solid var(--salmon);
+  outline-offset: -4px;
+}
+
+/* 04 Contact */
+.section--contact {
+  min-height: 0;            /* last section: the page ends shortly after the panel */
+  padding: clamp(240px, 31.3vh, 338px) 0 80px;
+  background-image: url(../images/fonds/contact.jpg);
+  background-position: center top;
+}
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 720px) 1fr;
+  gap: 24px;
+  min-height: 464px;
+  padding: 14px;
+  background: #fff;
+}
+.map {
+  position: relative;
+  min-height: 433px;
+  background: var(--map);
+}
+.map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 2px 3px 0;
+  text-align: right;
+  font-size: 22px;
+  line-height: 26px;
+}
+.contact__name { margin-top: -3px; font-size: 23px; line-height: 28px; font-weight: 700; }
+.contact__address { margin-top: 11px; }
+.contact__phone { margin-top: 26px; line-height: 29px; }
+.contact__transfer { margin-top: 47px; }
+.contact__wetransfer { margin-top: 25px; }
+.contact__info a:hover { color: var(--salmon); }
+.contact__social {
+  display: flex;
+  gap: 35px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+.contact__social a { transition: opacity .2s ease; }
+.contact__social a:hover { opacity: .75; }
+
+/* ---------- Smaller screens (no mobile design yet: sensible fallback) ---------- */
+
+/* ---------- Mobile (Figma frames "– Mobile", 390 wide) ----------
+   Used up to 1000 px wide; on tablets the column is capped at 640 px. */
+
+.burger,
+.ba__slider { display: none; }
+
+@media (max-width: 1000px) {
+  :root { --gutter: 20px; --container: 640px; }
+  html { scroll-snap-type: none; }
+
+  /* Header: logo left, burger right */
+  .header { height: 88px; }
+  .header__inner { width: 100%; }
+  .header__logo { top: 20px; left: 24px; width: 104px; transform: none; }
+  .nav { display: none; }
+  .burger {
+    display: block;
+    position: absolute;
+    top: 26px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  .burger span {
+    position: absolute;
+    left: 8px;
+    width: 28px;
+    height: 2.5px;
+    border-radius: 2px;
+    background: var(--burger);
+    transition: background .3s ease;
+  }
+  .burger span:nth-child(1) { top: 12px; }
+  .burger span:nth-child(2) { top: 20.75px; }
+  .burger span:nth-child(3) { top: 29.5px; }
+  .header[data-theme="light"] .burger span { background: var(--burger-light); }
+
+  /* 01 Accueil */
+  .section--accueil { min-height: max(100svh, 560px); }
+  .hero__tagline { top: 40%; font-size: 30px; }
+  .hero__band {
+    bottom: 24px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px var(--gutter);
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+  }
+  .hero__col--left { text-align: center; }
+
+  /* 02 Services: 4 cards, one under the other */
+  .section--services,
+  .section--galerie { padding: 112px 0 48px; }
+  .grid { grid-template-columns: 1fr; gap: 16px; }
+  .panel { min-height: 0; padding: 14px 16px 18px; background: rgba(255, 255, 255, 0.85); }
+  .panel h3 { margin-bottom: 14px; font-size: 24px; line-height: 29px; }
+  .panel p { margin-bottom: 9px; font-size: 16px; line-height: 20px; }
+
+  /* 03 Galerie: slider instead of the hover effect */
+  .grid--galerie { gap: 24px; }
+  .ba__img, .ba__canvas { display: none; }
+  .ba__media { cursor: ew-resize; }
+  .ba__caption { height: 34px; }
+  .ba__btn { font-size: 18px; }
+
+  .ba__slider {
+    display: block;
+    position: absolute;
+    inset: 0;
+    touch-action: pan-y;      /* vertical scroll still works, horizontal drags move the line */
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .ba__s-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .ba__s-img.is-gray { filter: grayscale(1); }
+  .ba__s-apres { clip-path: inset(0 0 0 var(--pos, 50%)); }
+  .ba__line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--pos, 50%);
+    width: 2px;
+    margin-left: -1px;
+    background: #fff;
+    pointer-events: none;
+  }
+  .ba__handle {
+    position: absolute;
+    top: 50%;
+    left: clamp(22px, var(--pos, 50%), calc(100% - 22px)); /* stays whole at the edges */
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
+    pointer-events: none;
+  }
+  .ba__handle svg { width: 40px; height: 40px; }
+  .ba__handle:focus-visible { outline: 2px solid var(--salmon); outline-offset: 2px; }
+
+  /* 04 Contact */
+  .section--contact { padding: 112px 0 48px; }
+  .contact { grid-template-columns: 1fr; gap: 22px; min-height: 0; padding: 14px 14px 22px; }
+  .map { min-height: 220px; }
+  .contact__info {
+    align-items: flex-start;
+    padding: 0 0 0 2px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 23px;
+  }
+  .contact__name { margin-top: 0; font-size: 21px; line-height: 25px; }
+  .contact__address { margin-top: 6px; }
+  .contact__phone { margin-top: 18px; line-height: 25px; }
+  .contact__transfer { margin-top: 18px; }
+  .contact__wetransfer { margin-top: 4px; }
+  .contact__social { gap: 16px; margin-top: 18px; padding-top: 0; }
+  .contact__social svg { width: 40px; height: 40px; }
+}
+
+/* Mobile menu */
+.menu-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px;
+  background: var(--salmon);
+  color: #fff;
+  animation: menu-in .25s ease;
+}
+.menu-mobile[hidden] { display: none; }
+.menu-mobile__logo { position: absolute; top: 20px; left: 24px; width: 104px; }
+.menu-mobile__logo img { width: 100%; height: auto; }
+.menu-mobile__close {
+  position: absolute;
+  top: 26px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+.menu-mobile__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 170px;
+}
+.menu-mobile__nav a { font-size: 38px; line-height: 44px; font-weight: 700; }
+.menu-mobile__nav a.is-active { color: var(--ink); }
+.menu-mobile__info { margin: auto 0 40px; font-size: 16px; line-height: 22px; }
+body.menu-open { overflow: hidden; }
+@keyframes menu-in { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
